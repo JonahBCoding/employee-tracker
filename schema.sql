@@ -3,11 +3,12 @@ CREATE DATABASE companydb;
 USE companydb;
 
 
-CREATE TABLE employee (
-    employee_id INT NOT NULL AUTO_INCREMENT,
-    first_name VARCHAR(20) NOT NULL,
-    last_name VARCHAR(20) NOT NULL,
-    role_id INT NOT NULL,
+CREATE TABLE employees (
+    employeeId INT NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(20) NOT NULL,
+    lastName VARCHAR(20) NOT NULL,
+    employeeId INT NOT NULL,
+    managerId INT NOT NULL,
     PRIMARY KEY (role_id)
 );
 
