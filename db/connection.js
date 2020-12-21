@@ -1,12 +1,10 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
-//const index = require('./index')
-// const promisemysql = require('promise-mysql')
 
-//var showemployees;
+var showemployees;
 var showroles;
-//var showdepartments;
+var showdepartments;
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -72,7 +70,7 @@ async function initApp() {
           break;
 
         case "View all departments":
-          viewDepartments();
+          return viewDepartments();
           break;
 
         case "Add a role":
@@ -174,7 +172,7 @@ async function updateRole() {
     .prompt([
       {
         type: "list",
-        name: "employeeId",
+        name: "empId",
         message: "Which employee's role would you like to update?",
         choices: showemployees,
       },
@@ -192,10 +190,12 @@ async function updateRole() {
 
 async function updateEmployeeRole(data) {
   connection.query(
-    `UPDATE employee SET role_id = ${data.roleId} WHERE role_id`,
-    function (error, res) {
+    `UPDATE employee SET role_id = ${data.roleId} WHERE id = ${data.empId}`,
+    function (err, res) {
       if (err) throw err;
-    })
+      console.table(res)
+      initApp()
+    });
 }
 
 async function addRole() {
@@ -240,11 +240,11 @@ async function addEmployeeRole(role) {
 }
 
 async function viewRoles() {
-  return connection.query("SELECT * from role", function (err, res) {
+  connection.query("SELECT * from role", function (err, res) {
     if (err) throw err;
     console.table(res);
-    initApp();
-  })
+  });
+  initApp();
 }
 
 module.exports = connection;

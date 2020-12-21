@@ -1,22 +1,22 @@
 
 
 INSERT INTO department (name)
-VALUES ("Management");
+VALUES ("Management", 1);
 
 INSERT INTO department (name)
-VALUES ("Sales");
+VALUES ("Sales", 2);
 
 INSERT INTO department (name)
-VALUES ("Accounting");
+VALUES ("Accounting", 3);
 
 INSERT INTO department (name)
-VALUES ("Warehouse");
+VALUES ("Warehouse", 4;
 
 INSERT INTO department (name)
-VALUES ("Human Resources")
+VALUES ("Human Resources", 5)
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Regional Manager", 150000, 1);
+VALUES ("Manager", 150000, 1);
 
 INSERT INTO role (title, salary, department_id)
 VALUES ("Salesperson", 90000, 2);
